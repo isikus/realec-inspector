@@ -1,0 +1,76 @@
+html, body {
+	overflow: auto;
+}
+
+@font-face {
+font-family: Open Sans;
+src: url(fonts/sansreg.ttf);
+}
+
+a:link {
+text-decoration: none;
+color: rgb(190,16,123);
+opacity: 1;
+transition: opacity .15s ease-in-out;
+-moz-transition: opacity .15s ease-in-out;
+-webkit-transition: opacity .15s ease-in-out;
+-ms-transition: opacity .15s ease-in-out;
+-o-transition: opacity .15s ease-in-out;
+}
+
+a:hover {
+opacity: 0.7;
+}
+
+a:visited {
+color: rgb(190,16,123);
+}
+
+#h1 {
+color: black;
+font-family: Open Sans;
+font-weight: bold;
+text-align: center;
+font-size: 26pt;
+}
+
+.txt {
+color: black;
+font-family: Open Sans;
+font-size: 11pt;
+}
+
+ul {
+list-style-type: none;
+}
+
+.innerlink {
+border-bottom: 1px dashed;
+}
+
+.red {
+color: #CC0000;
+}
+
+.green {
+color: #00CC00;
+}
+
+.blue {
+color: #0000CC;
+}
+
+.reddish {
+display: inline-block;
+color: #ff3333;
+}
+
+.yellowish {
+display: inline-block;
+color: #ffd900;
+}
+
+.blueish {
+display: inline-block;
+color: #0077ff;
+}
