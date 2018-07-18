@@ -50,25 +50,7 @@ function fadeout (object,mls) {
     }, mls);
 }
 
-/*
-function hideobj(objid) {
-	$(document).mouseup(function(e) 
-	{
-	    var container = $(objid);
-
-	    // if the target of the click isn't the container nor a descendant of the container
-	    if (!container.is(e.target) && container.has(e.target).length === 0) 
-	    {
-		container.hide();
-		$(objid).unbind( 'click', clickDocument );
-	    }
-	});
-};
-*/
-
 function showcut() {
-//	document.documentElement.style.overflow="visible";
-//	document.body.style.overflow="visible";
 	document.getElementById("cut").style.display = "block";
 	fadein(document.getElementById("cut"),500);
 	fadeout(document.getElementById("showcut"),500);
@@ -81,8 +63,6 @@ function showcut() {
 }
 
 function hidecut() {
-//	document.documentElement.style.overflow="hidden";
-//	document.body.style.overflow="hidden";
 	fadeout(document.getElementById("cut"),500);
 	fadeout(document.getElementById("hidecut"),500);
 	setTimeout(function() {
@@ -96,47 +76,27 @@ function hidecut() {
 	}, 500);
 }
 
-function popuplength(event) {
-	document.getElementById("length").style.display = "block";
-	document.getElementById("length").style.left = event.pageX+"px";
-/*
-	if (document.getElementById("lengthlink").getBoundingClientRect().top+pageYOffset+document.getElementById("lengthlink").getBoundingClientRect().height/2<event.pageY) .............................
-	else
-	document.getElementById("length").style.top = document.getElementById("lengthlink").getBoundingClientRect().top+pageYOffset-1-document.getElementById("length").getBoundingClientRect().height + "px";
-*/
-	document.getElementById("length").style.top = document.getElementById("lengthlink").getBoundingClientRect().bottom+pageYOffset+2+"px";
-	fadein(document.getElementById("length"),500);
+function popupbox(event,id) {
+	document.getElementById(id).style.display = "block";
+	document.getElementById(id).style.left = event.pageX+"px";
+	document.getElementById(id).style.top = document.getElementById(id+"link").getBoundingClientRect().bottom+pageYOffset+2+"px";
+	fadein(document.getElementById(id),500);
 	setTimeout(function() {
-		document.getElementById("lengthlink").setAttribute("onclick","hidelength()");
+		document.getElementById(id+"link").setAttribute("onclick","hidebox('"+id+"')");
 	}, 500);
 }
 
-function hidelength() {
-	fadeout(document.getElementById("length"),500);
+function hidebox(id) {
+	fadeout(document.getElementById(id),500);
 	setTimeout(function() {
-		document.getElementById("length").style.display = "none";
-		document.getElementById("lengthlink").setAttribute("onclick","popuplength(event)");
+		document.getElementById(id).style.display = "none";
+		document.getElementById(id+"link").setAttribute("onclick","popupbox(event,'"+id+"')");
 	}, 500);
 }
-
-/*
-function void0() {
-//	document.getElementById("lengthlink").onclick=hidelength();
-//	document.getElementById("lengthlink").href="javascript:void1()";
-}
-
-function void1() {
-//	document.getElementById("lengthlink").onclick=popuplength();
-//	document.getElementById("lengthlink").href="javascript:void0()";
-}
-*/
 
 window.onload = function() {
-//	document.getElementsByName('text_to_inspect')[0].value = decodeURIComponent(window.location.hash.replace('#', ''));
 
 	var textarea = document.querySelector('textarea');
-
-//	textarea.addEventListener('keydown', autosize);
 		     
 	function autosize() {
 	  var el = this;
@@ -151,17 +111,6 @@ window.onload = function() {
 	rsz();
 
 	fadein(document.body,500);
-	
-	/*
-	var Red = "#CC0000";
-	var Green = "#00CC00";
-	document.getElementById("spelling_tr").style.color=Red;
-	document.getElementById("academic_tr").style.color=Red;
-	document.getElementById("verbs_tr").style.color=Red;
-	document.getElementById("linking_tr").style.color=Green;
-	document.getElementById("collocations_tr").style.color=Green;
-	document.getElementById("length_tr").style.color=Red;
-	*/
 };
 
 function showmasker(maskid) {
@@ -176,13 +125,11 @@ function showmasker(maskid) {
 	});
 	fadein(document.getElementById(maskid),500);
 	if (placerShown) fadeout(document.getElementById("textplacer"),500);
-	// hideobj(maskid);
 }
 
 function hidemasker(maskid) {
 	fadeout(document.getElementById(maskid),500);
 	fadein(document.getElementById("textplacer"),500);
-	// hideobj(maskid);
 }
 
 function reversemaskerlink(caller,maskid) {
@@ -190,27 +137,17 @@ function reversemaskerlink(caller,maskid) {
 	else caller.href="javascript:showmasker('"+maskid+"')";
 }
 
-/*
-window.onresize = function() {
-	var elements = document.getElementsByName('textmask');
-	elements.forEach(function(item){
-	item.style.width = document.getElementById("textplacer").clientWidth+'px';
-	item.style.top = document.getElementById("textplacer").getBoundingClientRect().top+'px';
-	item.style.left = document.getElementById("textplacer").getBoundingClientRect().left+'px';
-	});
-};
-*/
-
 function rsz() {
-//	document.getElementById("textplacer").style.width = '98%';
 	var elements = document.getElementsByName('textmask');
 	Array.prototype.forEach.call(elements, function(item){
 	item.style.width = "100%";
-//	item.style.top = Math.round(document.getElementById("textplacer").getBoundingClientRect().top)+'px';
-//	item.style.left = Math.round(document.getElementById("textplacer").getBoundingClientRect().left)+'px';
 	});
-//	document.getElementById("textplacer").style.width = Math.round(document.getElementById("textplacer").clientWidth)+'px';
-	if (document.getElementById("length").style.display!="none") hidelength();
+	var elements = document.getElementsByName('popupbox');
+	Array.prototype.forEach.call(elements, function(item){
+	if (item.style.display!="none") {
+			hidebox(item.id)
+		}
+	});
 	setTimeout(function() {
 		var allelems = document.getElementsByTagName('*');
 		Array.prototype.forEach.call(allelems, function(item){

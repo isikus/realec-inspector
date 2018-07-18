@@ -115,6 +115,71 @@
 		overflow: hidden;
 		height: 30%;
 		}
+		
+		.switch-field {
+			overflow: hidden;
+			text-align: center;
+			width: 100%;
+			display: inline-block;
+			font-size: 18px;
+			font-family: Open Sans;
+		}
+
+		.switch-title {
+		  margin-bottom: 6px;
+		}
+
+		.switch-field input {
+			position: absolute !important;
+			clip: rect(0, 0, 0, 0);
+			height: 1px;
+			width: 1px;
+			border: 0;
+			overflow: hidden;
+		}
+
+		.switch-field label {
+			margin: 0px -0.3% 0px 0px;
+		}
+
+		.switch-field label {
+		  display: inline-block;
+		  width: 40%;
+		  background-color: #e4e4e4;
+		  color: rgba(0, 0, 0, 1);
+		  font-size: 14px;
+		  font-weight: normal;
+		  text-align: center;
+		  text-shadow: none;
+		  padding: 6px 14px;
+		  border: 1px solid rgba(0, 0, 0, 0.2);
+		  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+		  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+		  -webkit-transition: all 0.3s ease-in-out;
+		  -moz-transition:    all 0.3s ease-in-out;
+		  -ms-transition:     all 0.3s ease-in-out;
+		  -o-transition:      all 0.3s ease-in-out;
+		  transition:         all 0.3s ease-in-out;
+		}
+
+		.switch-field label:hover {
+			cursor: pointer;
+			z-index: 1;
+		}
+
+		.switch-field input:checked + label {
+		  background-color: rgba(190,16,123,0.4);
+		  -webkit-box-shadow: none;
+		  box-shadow: none;
+		}
+
+		.switch-field label:first-of-type {
+		  border-radius: 4px 0 0 4px;
+		}
+
+		.switch-field label:last-of-type {
+		  border-radius: 0 4px 4px 0;
+		}
 		</style>
 		<title>REALEC Inspector</title>
 
@@ -123,7 +188,14 @@
 		<div id="h1">REALEC Inspector</div>
 		<div class="txt" style="width: 80%; margin: auto; text-align: center;">This tool is intended to give students the ability to automatically evaluate their preparational IELTS essays. It compares the grammatical aspects of inputted text with the mean values for a large collection of others' essays of such type and then gives an idea on which important features could be enhanced for the text to stand out.</div>
 		<br>
-			<form method="post" onsubmit="fadeout(500)">
+		<form form method="post" onsubmit="fadeout(500)" class="form">
+			<div class="switch-field">
+				<input type="radio" id="switch_left" name="type" value="opinion" checked/>
+				<label for="switch_left">Opinion essay</label>
+				<input type="radio" id="switch_right" name="type" value="graph" />
+				<label for="switch_right">Graph description</label>
+			</div>
+		<br>
 				<label for="text_to_inspect" class="txt">Enter your IELTS-style essay (at least 150 words long):</label><br>
 			    <textarea name="text_to_inspect" type="text" id="inputa" value="" placeholder ="Write your essay here"></textarea>
 				<div style="text-align: center;"><input name="" style="position: absolute; font-family: Open Sans; font-size: 15px;" type="submit" value="Inspect!"></div>
