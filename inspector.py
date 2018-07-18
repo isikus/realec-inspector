@@ -2782,6 +2782,3 @@ def inspect_collection(coll_to_inspect):
 	textstats = [TextStats(open(f,'r',encoding='utf-8-sig').read()) for f in texts]
 	collstats = CollectionStats(*textstats)
 	return str(collstats)
-
-if __name__ == '__main__':
-	app.run(debug=True)
