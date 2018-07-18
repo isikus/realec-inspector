@@ -831,7 +831,7 @@ def GenerateEvaluation(ValuesDict):
 										Word length
 								</td>
 								<td style="width: 100%">
-										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is too short. Consider using more complex words: this contributes to the mark.
+										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is too short. Consider using more complex words: this contributes to the mark
 								</td>
 						</tr>"""
 		elif ValuesDict['MeanWordLength']<etalons[str(predicted_mark)]['MeanWordLength'][1]:
@@ -840,7 +840,7 @@ def GenerateEvaluation(ValuesDict):
 										Word length
 								</td>
 								<td style="width: 100%">
-										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is pretty average. The bigger it gets, though, the higher your mark is expected to be.
+										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is pretty average. The bigger it gets, though, the higher your mark is expected to be
 								</td>
 						</tr>"""
 		else:
@@ -849,7 +849,7 @@ def GenerateEvaluation(ValuesDict):
 										Total words
 								</td>
 								<td style="width: 100%">
-										Your words are in general <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">sufficiently long</a>. Keep it up, as mean word length has shown to positively affect the mark.
+										Your words are in general <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">sufficiently long</a>. Keep it up, as mean word length has shown to positively affect the mark
 								</td>
 						</tr>"""
 
@@ -2695,7 +2695,7 @@ def inspect_verbs(intext):
 				else:
 					out.append((a[l][0],None))
 			elif a[l][1] == 'VBG' and a[l][0].lower() not in non_ing:
-				out.append(a[l][0],Reddish)
+				out.append((a[l][0],Reddish))
 				gerunds += 1
 			elif a[l][1] == 'VBN' and l!=len(a)-1 and (a[l][0].lower() != 'been' or a[l+1][1][0] != 'V'):
 				out.append((a[l][0],Blueish))
