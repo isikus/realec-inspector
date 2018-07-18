@@ -2457,9 +2457,11 @@ app.url_map.converters['regex'] = RegexConverter
 
 from ufal.udpipe import Model, Pipeline, ProcessingError # pylint: disable=no-name-in-module
 
+'''
 java_path = "C:/Program Files (x86)/Java/jre1.8.0_161/bin/java.exe"
 ##################################### HERE
 os.environ['JAVAHOME'] = java_path
+'''
 
 def get_sentences(intext):	
 	sys.stderr.write('Loading model...')
