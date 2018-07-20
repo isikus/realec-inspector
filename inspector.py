@@ -415,7 +415,9 @@ def CountUniques(tagged):
 	return result, Colorize
 
 def ReadDataJson(filename):
-	with open(filename,'r',encoding='utf-8') as j:
+	PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+	json_url = os.path.join(PROJECT_ROOT, filename)
+	with open(json_url,'r',encoding='utf-8') as j:
 		data = json.load(j)
 	return data
 
