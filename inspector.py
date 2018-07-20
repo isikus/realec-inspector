@@ -93,7 +93,7 @@ class Model:
 
 		return output
 
-model = Model('english-partut-ud-2.0-170801.udpipe')
+model = Model('/home/egerasimenko/inspector/english-partut-ud-2.0-170801.udpipe')
 
 def check_spelling(text):
 	chkr = enchant.checker.SpellChecker("en_GB")
@@ -300,7 +300,7 @@ def run_enchant(intext):
 	return i, Colorize
 
 wordnet_lemmatizer = WordNetLemmatizer()
-st = StanfordPOSTagger('english-bidirectional-distsim.tagger','stanford-postagger.jar')
+st = StanfordPOSTagger('/home/egerasimenko/inspector/english-bidirectional-distsim.tagger','/home/egerasimenko/inspector/stanford-postagger.jar')
 st.java_options = '-mx4096m'
 
 folder = os.path.join(os.path.dirname(__file__), 'lists')
@@ -2466,7 +2466,7 @@ os.environ['JAVAHOME'] = java_path
 
 def get_sentences(intext):	
 	sys.stderr.write('Loading model...')
-	m = Model.load("english-ud-2.0-170801.udpipe")
+	m = Model.load("/home/egerasimenko/inspector/english-ud-2.0-170801.udpipe")
 	if not m:
 		sys.stderr.write("Cannot load model from file english-ud-2.0-170801.udpipe")
 		sys.exit(1)
