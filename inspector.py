@@ -837,7 +837,7 @@ def GenerateEvaluation(ValuesDict):
 										Word length
 								</td>
 								<td style="width: 100%">
-										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is too short. Consider using more complex words: this contributes to the mark.
+										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is too short. Consider using more complex words: this contributes to the mark
 								</td>
 						</tr>"""
 		elif ValuesDict['MeanWordLength']<etalons[str(predicted_mark)]['MeanWordLength'][1]:
@@ -846,7 +846,7 @@ def GenerateEvaluation(ValuesDict):
 										Word length
 								</td>
 								<td style="width: 100%">
-										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is pretty average. The bigger it gets, though, the higher your mark is expected to be.
+										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is pretty average. The bigger it gets, though, the higher your mark is expected to be
 								</td>
 						</tr>"""
 		else:
@@ -855,7 +855,7 @@ def GenerateEvaluation(ValuesDict):
 										Total words
 								</td>
 								<td style="width: 100%">
-										Your words are in general <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">sufficiently long</a>. Keep it up, as mean word length has shown to positively affect the mark.
+										Your words are in general <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">sufficiently long</a>. Keep it up, as mean word length has shown to positively affect the mark
 								</td>
 						</tr>"""
 
