@@ -93,15 +93,16 @@ class Model:
 
 		return output
 
-model = Model('/home/egerasimenko/inspector/english-partut-ud-2.0-170801.udpipe')
+model = Model(os.path.join(os.path.dirname(__file__),'english-partut-ud-2.0-170801.udpipe'))
 
 def check_spelling(text):
 	chkr = enchant.checker.SpellChecker("en_GB")
 	chkr.set_text(text)
 	for err in chkr:
 		#print (err.word)
-		sug = err.suggest()[0]
-		err.replace(sug)
+		sug = err.suggest()
+		if len(sug) > 0:
+			err.replace(sug[0])
 	
 	c = chkr.get_text()#returns corrected text
 	return c
@@ -141,7 +142,11 @@ def count_sent(parsed_text):
 def parsing_things(string):
 	token = re.search('[0-9]+\t(.+?)\t', string).group(1)
 	order = re.search('([0-9]+)\t', string).group(1)
-	head = re.search('\t([0-9]+)\t', string).group(1)
+	head = re.search('.+?\t.+?\t.+?\t.+?\t.+?\t.+?\t(.*?)\t', string)
+	try:
+		head = head.group(1)
+	except:
+		head = '0'
 	rel_type = re.search('\t[0-9]+\t(.+?)\t', string).group(1)
 	pos = re.search('[0-9]+\t.+?\t.+?\t(.+?)\t', string).group(1)
 	#grammar = re.search('[VERB|AUX]\t.+?\t(.+?)\t', every_str).group(1)
@@ -300,7 +305,8 @@ def run_enchant(intext):
 	return i, Colorize
 
 wordnet_lemmatizer = WordNetLemmatizer()
-st = StanfordPOSTagger('/home/egerasimenko/inspector/english-bidirectional-distsim.tagger','/home/egerasimenko/inspector/stanford-postagger.jar')
+st = StanfordPOSTagger(os.path.join(os.path.dirname(__file__),'english-bidirectional-distsim.tagger'),
+                       os.path.join(os.path.dirname(__file__),'stanford-postagger.jar'))
 st.java_options = '-mx4096m'
 
 folder = os.path.join(os.path.dirname(__file__), 'lists')
@@ -415,8 +421,7 @@ def CountUniques(tagged):
 	return result, Colorize
 
 def ReadDataJson(filename):
-	json_url = '/home/egerasimenko/inspector/' + filename
-	with open(json_url,'r',encoding='utf-8') as j:
+	with open(os.path.join(os.path.dirname(__file__),filename),'r',encoding='utf-8') as j:
 		data = json.load(j)
 	return data
 
@@ -832,7 +837,7 @@ def GenerateEvaluation(ValuesDict):
 										Word length
 								</td>
 								<td style="width: 100%">
-										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is too short. Consider using more complex words: this contributes to the mark
+										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is too short. Consider using more complex words: this contributes to the mark.
 								</td>
 						</tr>"""
 		elif ValuesDict['MeanWordLength']<etalons[str(predicted_mark)]['MeanWordLength'][1]:
@@ -841,7 +846,7 @@ def GenerateEvaluation(ValuesDict):
 										Word length
 								</td>
 								<td style="width: 100%">
-										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is pretty average. The bigger it gets, though, the higher your mark is expected to be
+										Your <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">mean word length</a> is pretty average. The bigger it gets, though, the higher your mark is expected to be.
 								</td>
 						</tr>"""
 		else:
@@ -850,7 +855,7 @@ def GenerateEvaluation(ValuesDict):
 										Total words
 								</td>
 								<td style="width: 100%">
-										Your words are in general <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">sufficiently long</a>. Keep it up, as mean word length has shown to positively affect the mark
+										Your words are in general <a class="innerlink" id="MeanWordLengthlink" onclick="popupbox(event,'MeanWordLength')" href="javascript:void(0)">sufficiently long</a>. Keep it up, as mean word length has shown to positively affect the mark.
 								</td>
 						</tr>"""
 
@@ -2466,7 +2471,7 @@ os.environ['JAVAHOME'] = java_path
 
 def get_sentences(intext):	
 	sys.stderr.write('Loading model...')
-	m = Model.load("/home/egerasimenko/inspector/english-ud-2.0-170801.udpipe")
+	m = Model.load(os.path.join(os.path.dirname(__file__),"english-ud-2.0-170801.udpipe"))
 	if not m:
 		sys.stderr.write("Cannot load model from file english-ud-2.0-170801.udpipe")
 		sys.exit(1)
