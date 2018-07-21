@@ -147,8 +147,16 @@ def parsing_things(string):
 		head = head.group(1)
 	except:
 		head = '0'
-	rel_type = re.search('\t[0-9]+\t(.+?)\t', string).group(1)
-	pos = re.search('[0-9]+\t.+?\t.+?\t(.+?)\t', string).group(1)
+	rel_type = re.search('.+?\t.+?\t.+?\t.+?\t.+?\t.+?\t.+?\t(.*?)\t', string)
+	try:
+		rel_type = rel_type.group(1)
+	except:
+		rel_type = '_'
+	pos = re.search('[0-9]+\t.+?\t.+?\t(.+?)\t', string)
+	try:
+		pos = pos.group(1)
+	except:
+		pos = 'NOUN'
 	#grammar = re.search('[VERB|AUX]\t.+?\t(.+?)\t', every_str).group(1)
 	return order, token, head, rel_type, pos
 
