@@ -1364,10 +1364,10 @@ class CollectionStats:
 		ResultPage = """<!doctype html>
 				<html lang = "en">
 								<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-								<script src="/static/engine.js"></script>
+								<script src="./static/engine.js"></script>
 						<head>
 								<meta charset="utf-8"/>
-								<link rel="stylesheet" href="/static/layout.css">
+								<link rel="stylesheet" href="./static/layout.css">
 								<title>REALEC Inspector - Inspected</title>
 						</head>
 						<body onresize="rsz()">
@@ -1643,10 +1643,10 @@ class TextStats:
 						ShorterError = """<!doctype html>
 								<html lang = "en">
 								<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-								<script src="/static/engine.js"></script>
+								<script src="./static/engine.js"></script>
 						<head>
 								<meta charset="utf-8"/>
-								<link rel="stylesheet" href="/static/layout.css">
+								<link rel="stylesheet" href="./static/layout.css">
 								<title>REALEC Inspector - Text too short</title>
 
 						</head>
@@ -1674,10 +1674,10 @@ class TextStats:
 				ResultPage = """<!doctype html>
 		<html lang = "en">
 						<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-						<script src="/static/engine.js"></script>
+						<script src="./static/engine.js"></script>
 				<head>
 						<meta charset="utf-8"/>
-						<link rel="stylesheet" href="/static/layout.css">
+						<link rel="stylesheet" href="./static/layout.css">
 						<title>REALEC Inspector - Inspected</title>
 				</head>
 				<body onresize="rsz()">
@@ -2743,10 +2743,10 @@ def HelloPage():
 			sleep(1)
 			ErrorStr = """<!doctype html>
 			<html lang = "en">
-			<script src="/static/engine.js"></script>
+			<script src="./static/engine.js"></script>
 		<head>
 			<meta charset="utf-8"/>
-			<link rel="stylesheet" href="/static/layout.css">
+			<link rel="stylesheet" href="./static/layout.css">
 			<title>REALEC Inspector - Error!</title>
 
 		</head>
