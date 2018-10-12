@@ -941,7 +941,7 @@ def GenerateEvaluation(ValuesDict):
 										Most common repetition
 								</td>
 								<td style="width: 100%">
-										 Your <a class="innerlink" id="most_common_repetitionlink" onclick="reversemaskerlink(this,'most_common_repetition')" href="javascript:showmasker('most_common_repetition')">most repeated word</a> appears in your text pretty rarely. That is great, as too common repetitions negatvely affect the mark.
+										 Your <a class="innerlink" id="most_common_repetitionlink" onclick="reversemaskerlink(this,'most_common_repetition')" href="javascript:showmasker('most_common_repetition')">most repeated word</a> appears in your text pretty rarely. That is great, as too common repetitions negatvely affect the mark
 								</td>
 						</tr>"""
 		elif ValuesDict['num_most_common_repetition']<etalons[str(predicted_mark)]['num_most_common_repetition'][1]:
@@ -2783,8 +2783,15 @@ def inspect_from_address(text_to_inspect):
 		return "Looks like there is no such file on the server."
 		#return 
 	try:
-				stats = TextStats(text_to_inspect)
-				return str(stats)
+		json_path = os.path.splitext(path_to_text)[0]+'.json'
+		try:
+			with open(json_path, 'r', encoding='utf-8') as j:
+				text_data = json.load(j)
+					text_type = text_data['text_type'].split()[0]
+					stats = TextStats(text_type, text_to_inspect)
+		except:
+			stats = TextStats('opinion', text_to_inspect)
+		return str(stats)
 	except:
 		return "Looks like something wrong happened with your text decoding. Make sure there are regular\
 					latin characters and regular punctuation symbols in the text."
